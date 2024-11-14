@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Smart Farm - Tamadun.id</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="style.css">
+<script type="text/javascript" src="https://kit.fontawesome.com/64d58efce2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="dashboard">
+  <header>
+    <div class="f fe">
+      <div class="heading">
+        <h5 class="date">1 Feb 2019</h5>
+        <h2 class="title">Cuaca BMKG</h2>
+      </div>
+      <span class="material-symbols-outlined">
+          partly_cloudy_day
+      </span>
+    </div>
+    
+    <div class="weather f">
+      <div>
+        <strong><input type="number" class="sensor-input" id="duration" name="duration" value="10"> Menit</strong>
+        <p>Durasi</p>
+      </div>
+      <div>
+        <strong><input type="number" style="width: 60px;" class="sensor-input" id="wetTreshold" name="wetTreshold" value="500"> </strong>
+        <p>Batas Basah</p>
+      </div>
+      <div>
+        <strong><input type="number" style="width: 60px;" class="sensor-input" id="dryTreshold" name="dryTreshold" value="500"> </strong>
+        <p>Batas Kering</p>
+      </div>
+    </div>
+  </header>
+  <section>
+  <!-- Category -->
+    <div class="category">
+      <ul class="cat" id="cat">
+        <li id="i-0"><a href="#!" class="active">Instalasi-001</a></li>
+        <li id="i-1"><a href="#!">Instalasi-002</a></li>
+        <li id="p-0"><a href="#!">Peremajaan-001</a></li>
+        <li id="p-1"><a href="#!">Peremajaan-002</a></li>
+      </ul>
+    </div>
+  <!-- Appliances -->
+    <div class="appliances">
+      
+      <div class="appliance">
+        <input type="checkbox" name="a" id="a">
+        <label for="a">
+          <i class="l"></i>
+          <strong>Lampu</strong>
+          <span data-o="on" data-c="off"></span>
+          <small></small>
+        </label>
+      </div>
+      
+      <div class="appliance">
+        <input type="checkbox" name="a" id="b" onchange="engOff()">
+        <label for="b">
+          <i class="r"></i>
+          <strong>Mesin</strong>
+          <span data-o="on" data-c="off"></span>
+          <small></small>
+        </label>
+      </div>
+      
+      <div class="appliance">
+        <input type="checkbox" name="a" id="c">
+        <label for="c">
+          <i class="a"></i>
+          <strong class="rd" id="rd">123</strong>
+          <strong>Sensor Hujan</strong>
+          <span data-o="on" data-c="off"></span>
+          <small></small>
+        </label>
+      </div>
+      
+      <div class="appliance">
+        <input type="checkbox" name="a" id="d">
+        <label for="d">
+          <i class="f"></i>
+          <strong>Tuas Air</strong>
+          <span data-o="in" data-c="out"></span>
+          <small></small>
+        </label>
+      </div>
+      
+      <div class="progress" role="progressbar" onclick="recall()">
+          <div class="progress-inner">
+            <div class="progress-indicator"></div>
+            <div class="progress-indicator"></div>
+          </div>
+          <span class="progress-label">
+            <strong>50</strong>
+            <span>%</span>
+          </span>
+        </div>
+      <div class="description">
+          <strong>Volume Nutrisi </strong>
+          <input type="number" id="nutrientVolume" min="0" max="100" step="1" value="50" style="display:none" />
+        </div>
+      <div class="m-player">
+        <h2>Target Terdekat</h2>
+        <div class="player">
+            <div class="timeline-block timeline-block-right">
+              <div class="marker"></div>
+              <div class="timeline-content">
+                 <h3>Selasa, 18 Juni 2024</h3>
+                 <span>Panen Instalasi-001</span>
+                 <p>
+                     Catatan:<br>
+                     1. Tanggal Masuk 20 Mei 2024<br>
+                     2. Bibit Rusak : 4 Lubang<br>
+                     3. ....
+                 </p>
+              </div>
+            </div>
+            <div class="timeline-block timeline-block-right">
+              <div class="marker"></div>
+              <div class="timeline-content">
+                 <h3>Selasa, 18 Juni 2024</h3>
+                 <span>Panen Instalasi-001</span>
+                 <p>
+                     Catatan:<br>
+                     1. Tanggal Masuk 20 Mei 2024<br>
+                     2. Bibit Rusak : 4 Lubang<br>
+                     3. ....
+                 </p>
+              </div>
+            </div>
+            <div class="timeline-block timeline-block-right">
+              <div class="marker"></div>
+              <div class="timeline-content">
+                 <h3>Selasa, 18 Juni 2024</h3>
+                 <span>Panen Instalasi-001</span>
+                 <p>
+                     Catatan:<br>
+                     1. Tanggal Masuk 20 Mei 2024<br>
+                     2. Bibit Rusak : 4 Lubang<br>
+                     3. ....
+                 </p>
+              </div>
+            </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  <div class="radial">
+        <button class="fax" id="fa-1">
+                <span class="material-symbols-outlined fax">logout</span>
+        </button>
+        <button class="fax" id="fa-2">
+                <span class="material-symbols-outlined fax">account_balance_wallet</span>
+        </button>
+        <button class="fax" id="fa-3">
+                <span class="material-symbols-outlined fax">edit_note</span>
+        </button>
+        <button class="fab">
+            <div class="fabx" id="plus">
+                <span class="material-symbols-outlined fabx">
+                add
+                </span>
+            </div>
+        </button>
+   </div>
+   <div class="container" id="formIzin" style="display:none" >
+  <div class="forms-container">
+        <div class="signin-signup">
+          <form name="noteForm" id="noteForm" class="sign-in-form" action="../secureProcess.php?proses=insertFarmNote" method="post" enctype="multipart/form-data">
+            <h2 class="title">Catatan Petani</h2>
+            <div class="input-field">
+              <select name="note_cat" id="noteCat" placeholder="Jenis Catatan" required>
+                                    <option value="" disabled selected>Pilih Jenis Catatan</option>
+                                    <option value="1">Semai</option>
+                                    <option value="2">Peremajaan</option>
+                                    <option value="3">Tanam</option>
+                                    <option value="5">Panen</option>
+                </select>
+              <i class="fas fa-check-square"></i>
+            </div>
+            <div class="input-field">
+              <label id="santriName">Judul Pengingat</label>
+              <input type="text" name="title" id="title" style="text-transform: uppercase;" placeholder="Judul Pengingat" tabindex="2">
+              <i class="fas fa-pencil-alt"></i>
+            </div>
+			<br>
+			<div class="input-field-group">
+			    <div class="label-group" id="lbl-waktu">Waktu Semai/Tanam</div>
+			    <div class="col-lg-6">    
+			        <label>Tanggal</label>
+    				<input placeholder="Tanggal Semai/Tanam" type="date" id="db" name="date" tabindex="3" required>
+    			    <i class="fas fa-calendar"></i>
+				</div>
+			    <div class="col-lg-6">
+			        <label>Jam</label>
+    				<input placeholder="Jam Semai/Tanam" type="time" name="time" id="time" value="" tabindex="4" required>
+    			    <i class="fas fa-clock"></i>
+			    </div>
+			</div>
+			<br>
+			<div class="input-field-group">
+			<div class="label-group">Waktu Tindak Lanjut</div>  
+			<div class="col-lg-6">
+			<label>Tanggal</label>
+			<input placeholder="Tanggal Tindak Lanjut" type="date" id="dc" name="dateb" tabindex="5" required>
+    			    <i class="fas fa-calendar"></i>
+			</div>
+			<div class="col-lg-6">
+			<label>Jam</label>
+			<input placeholder="Jam Tindak Lanjut" type="time" name="timeb" id="timeb" value="" tabindex="6" required>
+    			    <i class="fas fa-clock"></i>
+			</div>
+			</div>
+			<div class="input-field-textarea">
+			    <label>Catatan</label>        
+				<textarea name="note" tabindex="9"></textarea>   
+			</div>
+			<div class="input-field">
+			<label>Dokumentasi</label>          
+			<input name="doc" type="file" id="doc" placeholder="Foto Dokumentasi" tabindex="7" required>     
+			<i class="fas fa-file"></i>
+			</div>
+            <div class="inline-btn">
+                <input type="button" name="cancel" id="cancel" value="Tutup" class="btn-close">
+                <input type="button" name="submit" id="sbmbutton" value="Buat Catatan" class="btn solid" onclick="saveNote()">
+            </div>
+          </form>
+        </div>
+      </div>
+      </div>
+</div>
+<script>
+    (function () {
+      const today=new Date().toLocaleDateString('id-ID', { timeZone: 'Asia/Jakarta',  weekday: 'long',year: 'numeric',month: 'long',day: 'numeric'});
+      document.querySelector(".date").innerHTML=today;
+      
+      
+      const butt = document.querySelector('.fab');
+      const cancel = document.querySelector('#cancel');
+      const note = document.querySelector('#fa-3');
+      const noteCat = document.querySelector('#noteCat');
+    
+
+      noteCat.onchange =(eve) => {
+          console.log(eve.target.value);
+          document.querySelector('#lbl-waktu').textContent='Waktu '+eve.target.options[eve.target.selectedIndex].text;
+      };
+      
+      butt.onclick =({event}) => {
+          document.querySelector('.radial').classList.toggle("open");
+      };
+      
+      note.onclick = ({ev}) =>{
+          document.querySelector('div#formIzin').style.display = 'block';
+            if(window.scrollY!=0) {
+              setTimeout(function() {
+                window.scrollTo(0,window.scrollY-30);
+              }, 5);
+            }
+          document.querySelector('header').style.display = 'none';
+          document.querySelector('section').style.display = 'none';
+          document.querySelector('.radial').style.display = 'none';
+          document.querySelector('.radial').classList.toggle("open");
+      };
+      
+      cancel.onclick = ({ev}) =>{
+          document.querySelector('div#formIzin').style.display = 'none';    
+          document.querySelector('header').style.display = 'block';
+          document.querySelector('section').style.display = 'block';
+          document.querySelector('.radial').style.display = 'block';
+      };
+      
+    })();
+    
+     const cat = document.getElementById('cat');
+     var number=0;
+     cat.addEventListener('click', function(e) {
+            var target = e.target; // Clicked element
+            while (target && target.parentNode !== cat) {
+                target = target.parentNode; // If the clicked element isn't a direct child
+                if(!target) { return; } // If element doesn't exist
+            }
+            if (target.tagName === 'LI'){
+                    for (const li of document.querySelectorAll("li")) {
+                        li.firstChild.classList.remove("active");
+                    }
+                    target.firstChild.classList.add("active");
+                    var id = (target.id).split("-");
+                    number=id[1];
+                    recall();
+                    
+            }
+      });
+
+    window.onload=recall();
+    function recall(){
+        status();
+    };
+    
+    const devices={"status":"lock", "relay1":"lamp-kamar","relay2":"lamp-wc","relay4":"fan","relay3":"socket"};
+    
+    //var lastUpdated=document.getElementById("updated").innerHTML;
+    
+    function nutrientGraph(target){
+        const progress = document.querySelector(`.progress`);
+        const progressIndicator = document.querySelector(`.progress-indicator`);
+        const progressLabel = document.querySelector(`.progress-label > strong`);
+        
+        let value = target <= 100 && target >= 0 ? target : 50;
+        progressLabel.textContent = value;
+        progress.style.setProperty(`--progress-value`, value);
+        progress.dataset.value = value;
+    
+        if (value > 50) progress.classList.add(`progress--upper-half-value`);
+        else
+          progress.classList.contains("progress--upper-half-value") &&
+            progress.classList.remove(`progress--upper-half-value`);
+      
+    }
+    
+    function loadPage(x,y){
+      
+    			$("#a").prop("checked",true);
+
+          const res = x.split("-");
+                
+    			if(res[0] == "on"){
+    			    $("#b").prop("checked",true);
+    			}else{
+    			    $("#b").prop("checked",false);
+    			}
+
+          if(res[4] == "on"){
+    			    $("#c").prop("checked",true);
+    			}else{
+    			    $("#c").prop("checked",false);
+    			}
+    			
+          $("#rd").html(res[3]);
+    			
+    			if(res[2] != "90"){
+    			    $("#d").prop("checked",true);
+    			}else{
+    			    $("#d").prop("checked",false);
+    			}
+    			
+    			var nutrientVol=(35-res[1])*100/25;
+    			
+    			console.log(nutrientVol);
+    			
+    			nutrientGraph(parseInt(nutrientVol));
+    			
+    }
+    
+    
+    function engOff(){
+      let xhttp = new XMLHttpRequest();
+      const duration = document.getElementById("duration").value;
+      let stat = document.getElementById("b").checked?"on":"off";
+      let rainSensStat = document.getElementById("c").checked?"on":"off";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          //alert(this.responseText);
+          loadPage(this.responseText,1);
+        }
+      };
+      xhttp.open("GET", "/engine?engineStatus="+stat+"&duration="+duration+"&rainSensStat="+rainSensStat, true);
+      xhttp.send();
+        
+    }
+    
+    function status(){
+      let rainSensStat = document.getElementById("c").checked?"on":"off";
+      const duration = document.getElementById("duration").value;
+      const wetTreshold = document.getElementById("wetTreshold").value;
+      const dryTreshold = document.getElementById("dryTreshold").value;
+      let xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          //alert(this.responseText);
+          loadPage(this.responseText,1);
+        }
+      };
+      xhttp.open("GET", "/status?duration="+duration+"&rainSensStat="+rainSensStat+"&dryTreshold="+dryTreshold+"&wetTreshold="+wetTreshold, true);
+      xhttp.send();
+        
+    }
+
+    setInterval(function ( ) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("pressure").innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("GET", "/pressure", true);
+      xhttp.send();
+    }, 10000 ) ;
+</script>
+</body>
+</html>
