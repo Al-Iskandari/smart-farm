@@ -4,8 +4,8 @@
 #include <FS.h>
 #include <Servo.h>
 
-const char* ssid = "Redmi"; //"Galaxy A03 Core8529";
-const char* password = "buntutMuIren9"; //"MilikAsidar";
+const char* ssid = "YOUR_WIFI_SID";
+const char* password = "YOUR_WIFI_PASSWORD";
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
